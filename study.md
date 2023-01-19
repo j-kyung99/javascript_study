@@ -49,3 +49,29 @@
     어떤 동작을 실행하고 난 뒤 연이어 실행되는 함수
 
 - 이벤트를 만들 때 사용하는 메서드 : addEventListener
+
+## 고차 함수(high order function)
+
+    함수를 리턴하는 함수 => 함수 간의 중복을 제거하기 위하여 사용
+
+```javascript
+const a = (number) => () => {
+  console.log(number);
+}; // return 생략 버전
+
+/* 둘 다 같은 함수임 */
+
+const a = (number) => {
+  return () => {
+    console.log(number);
+  };
+}; // return 생락X 버전
+```
+
+## 기존 코드 중첩 제거 방법
+
+1. if문 다음에 나오는 공통된 절차를 각 분기점 내부에 넣음
+2. 분기점에서 짧은 절차부터 실행하게 if문 작성
+3. 짧은 절차가 끝나면 return(함수 내부의 경우)이나 break(for문 내부의 경우)로 중단
+4. else를 제거(이 때 중첩 하나가 제거됨)
+5. 다음 중첩된 분기점이 나오면 1~4의 과정을 반복
