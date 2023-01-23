@@ -181,3 +181,15 @@ Array(9)
   });
 // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
+
+## slice 메서드
+
+    .slice(start, end) => start부터 end전까지 자르는 메서드
+    원본을 변화시키지도 않고, 추가 불가능
+
+## sort 메서드
+
+    .sort((a, b) => a - b); // 오름차순
+    .sort((a, b) => b - a); // 내림차순
+    원본을 변화시키기 때문에, slice로 복사하고 sort하는 방식을 추천
+    문자열 비교하려면 a[0].charCodeAt() - b[0].charCodeAt()해서 앞글자 비교하거나 a.localCompare(b)쓰면 완벽 오름차순(사전순) 정렬 가능
