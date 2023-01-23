@@ -95,3 +95,89 @@ const a = (number) => {
 ## split 메서드
 
     문자열을 배열로 바꿔주는 메서드
+
+## document.createElement, document.createTextNode
+
+    각각 태그, 텍스트를 만드는 메서드
+    but, 다른 태그에 append나 appendChild 하기 전까지는 화면에 보이지 않음
+
+## appendChild, append
+
+    document.createElement, document.createTextNode로 만든 태그나 텍스트를 선택한 태그의 자식 태그로 넣음
+    appendChild는 하나만 넣을 수 있고, append는 여러 개를 동시에 넣을 수 있음
+    append 사용 시 document.createTextNode 대신 문자열을 바로 넣어도 됨
+
+## forEach 메서드
+
+    .forEach((element, index) => {})
+    배열 각 자리마다 함수를 적용해주는 메서드(반복문 역할)
+
+```javascript
+const answer = [3, 1, 4, 6];
+const value = "3214";
+let strike = 0;
+let ball = 0;
+for (let i = 0; i < answer.length; i++) {
+  const index = value.indexOf(answer[i]);
+  if (index > -1) {
+    if (index === i) {
+      strike += 1;
+    } else {
+      ball += 1;
+    }
+  }
+}
+
+/* 위와 아래의 코드는 동일하게 작동 */
+
+const answer = [3, 1, 4, 6];
+const value = "3214";
+let strike = 0;
+let ball = 0;
+answer.forEach((element, i) => {
+  const index = value.indexOf(element);
+  if (index > -1) {
+    if (index === i) {
+      strike += 1;
+    } else {
+      ball += 1;
+    }
+  }
+});
+```
+
+## map 메서드
+
+    .map((element, index) => {})
+    배열의 요소를 순회하면서 값을 바꿔주는 메서드
+    forEach의 역할을 하면서 값도 바꿔줌
+    but, 기존의 배열은 바뀌지 않고 return 값대로 새로운 배열을 생성함
+
+```javascript
+const array = [1, 2, 3, 4];
+array.map((element, i) => {
+  return element * 2;
+});
+```
+
+## fill 메서드
+
+    원하는 값으로 빈 배열을 채워줄 수 있음
+
+```javascript
+Array(9).fill();
+// 크기가 9인 빈 배열을 생성 후 undefined로 채움
+
+Array(9).fill(0);
+// 크기가 9인 빈 배열을 생성 후 0으로 채움
+
+/* map과 혼합해서 사용하는 방법 -----------------------
+  for문을 사용하지 않고도 차례대로 배열을 채울 수 있음! */
+
+Array(9)
+  .fill(0)
+  .map((element, index) => {
+    return index + 1;
+  });
+// [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
