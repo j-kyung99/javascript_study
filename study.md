@@ -197,3 +197,33 @@ Array(9)
 ### var과 let의 차이
 
     var는 '함수' 스코프를 가지고, let은 '블록' 스코프를 가짐
+
+### .과 []의 차이
+
+```javascript
+let computerChoice = "scissros";
+const rspX = {
+  scissors: "0",
+  rock: "-220px",
+  paper: "-440px",
+};
+/* rspX.computerChoice 하면 문자열 속성,
+   rspX[computerChoice] 하면 값(rspX['scissors'])이 전달 */
+```
+
+### setInterval은 재귀 setTimeout으로 바꿔쓸 수 있음 but, 같은 것은 아님
+
+### 객체에 참조 관계를 유지하고 싶으면 변수에 저장하여 변수를 재사용해야함
+
+### || 줄이는 꿀팁
+
+```javascript
+if (
+  diff === "고양이" ||
+  diff === "강아지" ||
+  diff === "사자" ||
+  diff === "거북이"
+)
+  /* 위의 ||를 사용한 코드를 밑의 배열과 includes 메서드를 통하여 줄일 수 있음 */
+  ["고양이", "강아지", "사자", "거북이"].includes(diff);
+```
