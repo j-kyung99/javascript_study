@@ -211,9 +211,9 @@ const rspX = {
    rspX[computerChoice] 하면 값(rspX['scissors'])이 전달 */
 ```
 
-### setInterval은 재귀 setTimeout으로 바꿔쓸 수 있음 but, 같은 것은 아님
+#### *** setInterval은 재귀 setTimeout으로 바꿔쓸 수 있음 but, 같은 것은 아님
 
-### 객체에 참조 관계를 유지하고 싶으면 변수에 저장하여 변수를 재사용해야함
+#### *** 객체에 참조 관계를 유지하고 싶으면 변수에 저장하여 변수를 재사용해야함
 
 ### || 줄이는 꿀팁
 
