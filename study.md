@@ -211,9 +211,9 @@ const rspX = {
    rspX[computerChoice] 하면 값(rspX['scissors'])이 전달 */
 ```
 
-#### *** setInterval은 재귀 setTimeout으로 바꿔쓸 수 있음 but, 같은 것은 아님
+#### \*\*\* setInterval은 재귀 setTimeout으로 바꿔쓸 수 있음 but, 같은 것은 아님
 
-#### *** 객체에 참조 관계를 유지하고 싶으면 변수에 저장하여 변수를 재사용해야함
+#### \*\*\* 객체에 참조 관계를 유지하고 싶으면 변수에 저장하여 변수를 재사용해야함
 
 ### || 줄이는 꿀팁
 
@@ -227,3 +227,16 @@ if (
   /* 위의 ||를 사용한 코드를 밑의 배열과 includes 메서드를 통하여 줄일 수 있음 */
   ["고양이", "강아지", "사자", "거북이"].includes(diff);
 ```
+
+## add, replace, remove 메서드
+
+    태그.classList.add('클래스'); // 추가
+    태그.classList.replace('기존클래스', '수정클래스'); // 교체
+    태그.classList.remove('클래스'); // 제거
+
+## reduce 메서드
+
+    배열.reduce((누적값, 현재값) => {
+      return 새로운 누적값;
+    }, 초기값);
+    // 초기값 제공하지 않을 경우 배열의 첫 번째 요소가 초기값이 됨
