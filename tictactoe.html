@@ -27,16 +27,18 @@
       let turn = "O";
 
       const checkWinner = (target) => {
-        let rowIndex;
-        let cellIndex;
-        rows.forEach((row, ri) => {
-          row.forEach((cell, ci) => {
-            if (cell === target) {
-              rowIndex = ri;
-              cellIndex = ci;
-            }
-          });
-        });
+        const rowIndex = target.parentNode.rowIndex;
+        const cellIndex = target.cellIndex;
+        // let rowIndex;
+        // let cellIndex;
+        // rows.forEach((row, ri) => {
+        //   row.forEach((cell, ci) => {
+        //     if (cell === target) {
+        //       rowIndex = ri;
+        //       cellIndex = ci;
+        //     }
+        //   });
+        // }); 위와 같은 코드
         let hasWinner = false;
         if (
           rows[rowIndex][0].textContent === turn &&
@@ -69,30 +71,51 @@
         return hasWinner;
       };
 
-      const callback = (event) => {
-        if (event.target.textContent) {
-          console.log("빈칸이 아닙니다.");
-          return;
-        }
-        event.target.textContent = turn;
-        if (checkWinner(event.target)) {
+      const checkWinnerAndDraw = (target) => {
+        const hasWinner = checkWinner(target);
+        if (hasWinner) {
           $result.textContent = `${turn}님이 승리!`;
           $table.removeEventListener("click", callback);
           return;
         }
-        let draw = true;
-        rows.forEach((row) => {
-          row.forEach((cell) => {
-            if (!cell.textContent) {
-              draw = false;
-            }
-          });
-        });
+        const draw = rows.flat().every((cell) => cell.textContent);
+        // let draw = true;
+        // rows.forEach((row) => {
+        //   row.forEach((cell) => {
+        //     if (!cell.textContent) {
+        //       draw = false;
+        //     }
+        //   });
+        // });
         if (draw) {
           $result.textContent = `무승부`;
           return;
         }
-        turn = turn === "O" ? "X" : "O";
+        turn = turn === "X" ? "O" : "X";
+      };
+
+      let clickable = true;
+      const callback = (event) => {
+        if (!clickable) {
+          return;
+        }
+        if (event.target.textContent !== "") {
+          console.log("빈칸이 아닙니다.");
+          return;
+        }
+        event.target.textContent = turn;
+        checkWinnerAndDraw(event.target);
+        if (turn === "X") {
+          const emptyCells = rows.flat().filter((v) => !v.textContent);
+          const randomCell =
+            emptyCells[Math.floor(Math.random() * emptyCells.length)];
+          clickable = false;
+          setTimeout(() => {
+            randomCell.textContent = "X";
+            checkWinnerAndDraw(randomCell);
+            clickable = true;
+          }, 1000);
+        }
       };
 
       for (let i = 0; i < 3; i++) {
