@@ -315,3 +315,22 @@ if (
 
     contextmenu
       기본적으로 브라우저 메뉴를 띄우므로 기본 동작 막으려면 event.preventDefault 메서드 호출
+
+### 변수는 반드시 선언 이후에 사용해야 되지만, 함수는 순서에 상관이 없음(function 키워드 일 때만)
+
+## clientX, clientY / pageX, pageY
+
+    clientX는 현재 브라우저 페이지 내에서의 x 좌표를 가리킴
+    pageX도 브라우저 페이지 내에서의 x 좌표를 가리키지만, 스크롤이 있는 경우 스크롤한 픽셀 값까지 포함
+
+## offsetX, offsetY / screenX, screenY
+
+    offsetX는 이벤트를 연결한 대상을 기준으로 마우스의 x 좌표를 가져옴
+    페이지 내의 다른 태그에 마우스 이벤트를 걸면 해당 태그의 왼쪽 모서리 좌표가 0이 됨
+    screenX는 모니터를 기준으로 잡아 모니터의 왼쪽 모서리가 0이 됨
+
+## mouseeventX, mouseeventY / mousemove / mousedown, mouseup
+
+    mouseevent는 얼마나 마우스를 움직였는지 표시
+    mousemove 이벤트 경우에만 실제 값이 잡힘
+    mousedown, mouseup는 마우스 방향을 판단할 때 사용
