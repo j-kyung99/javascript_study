@@ -120,7 +120,73 @@
       }
       startGame();
 
-      function moveCells(direction) {}
+      data = [
+        [0, 2, 4, 2],
+        [0, 0, 8, 0],
+        [2, 2, 4, 8],
+        [0, 16, 0, 4],
+      ];
+      draw(); // 임의 데이터 설정
+
+      function moveCells(direction) {
+        switch (direction) {
+          case "left": {
+            const newData = [[], [], [], []];
+            data.forEach((rowData, i) => {
+              rowData.forEach((cellData, j) => {
+                if (cellData) {
+                  const currentRow = newData[i];
+                  const prevData = currentRow[currentRow.length - 1];
+                  if (prevData === cellData) {
+                    // 이전 값과 지금 값이 같으면
+                    currentRow[currentRow.length - 1] *= -2;
+                    // 합치는데, 연속적으로 합쳐지는 함정 현상 피하기 위해 -로 적용
+                  } else {
+                    newData[i].push(cellData);
+                  }
+                }
+              });
+            });
+            console.log(newData);
+            [1, 2, 3, 4].forEach((rowData, i) => {
+              [1, 2, 3, 4].forEach((cellData, j) => {
+                data[i][j] = Math.abs(newData[i][j]) || 0;
+              });
+            });
+            break;
+          } // 케이스 안에서 변수 선언하는 경우 {} 사용 (변수 겹치면 에러나기 때문)
+          case "right": {
+            const newData = [[], [], [], []];
+            data.forEach((rowData, i) => {
+              rowData.forEach((cellData, j) => {
+                if (rowData[3 - j]) {
+                  const currentRow = newData[i];
+                  const prevData = currentRow[currentRow.length - 1];
+                  if (prevData === rowData[3 - j]) {
+                    currentRow[currentRow.length - 1] *= -2;
+                  } else {
+                    newData[i].push(rowData[3 - j]);
+                  }
+                }
+              });
+            });
+            console.log(newData);
+            [1, 2, 3, 4].forEach((rowData, i) => {
+              [1, 2, 3, 4].forEach((cellData, j) => {
+                data[i][3 - j] = Math.abs(newData[i][j]) || 0;
+              });
+            });
+            break;
+          }
+          case "up": {
+            break;
+          }
+          case "down": {
+            break;
+          }
+        }
+        draw();
+      }
       window.addEventListener("keyup", (event) => {
         if (event.key === "ArrowUp") {
           moveCells("up");
