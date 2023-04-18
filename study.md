@@ -334,3 +334,19 @@ if (
     mouseevent는 얼마나 마우스를 움직였는지 표시
     mousemove 이벤트 경우에만 실제 값이 잡힘
     mousedown, mouseup는 마우스 방향을 판단할 때 사용
+
+## documentFragment
+
+    실무에서 화면에 태그 추가 시 createElement로 만들어서 실제 태그에 바로 추가하는 방식을 잘 사용하지 않음. 대신 document.createDocumentFragment 메서드로 메모리 안에서만 존재하는 documentFragment를 만들고, documentFragment안에 필요한 태그를 추가한 뒤 마지막으로 한 번에 추가하는 방식을 사용함
+
+## 키보드 이벤트
+
+    대표적인 키보드 이벤트 => keydown, keyup (키보드를 누를 때와 눌렀다 뗄 때 각각 호출)
+    어떤 키를 눌렀는지는 event.key 속성에 나옴
+    왼쪽은 ArrowLeft, 오른쪽은 ArrowRight, 위쪽은 ArrowUp, 아래쪽은 ArrowDown
+    속성 기능도 제공하여 다른 키와 동시에 누르는 것도 알아낼 수 있음
+
+## 마우스 이벤트
+
+    대표적인 마우스 이벤트 => mousedown, mouseup, mousemove (마우스를 클릭할 때, 클릭했다가 뗄 때, 마우스를 이동할 때 각각 호출)
+    이벤트 속성에서 x, y 좌표 얻을 수 있으며 이를 이용해 마우스 위치 변화를 잡아낼 수 있음
